@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Meeting Platform</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <script src="../static/script.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">SierM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('join') }}">Join Meeting</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link" href="{{url_for('create_meeting') }}">Create Meeting</a> -->
+                    <a class="nav-link" href="{{url_for('create') }}">Create/Schedule Meeting</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{{url_for('schedule_meeting') }}">Scheduled Meetings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="jumbotron jumbotron-fluid dynamic-background">
+        <div class="container text-center">
+            <h1 class="display-4">Welcome {{name}}</h1>
+            <p class="lead">Your go-to solution for virtual meetings, collaboration, and more.</p>
+        </div>
+    </header>
+
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Features</h2>
+        <div class="features-grid">
+            <!-- Top Row -->
+            <div class="feature-container">
+                <img src="../static/assests/Add Video Call.png" alt="High-Quality Video" class="feature-image">
+                <div class="feature-description">Experience crystal-clear video in every meeting.</div>
+            </div>
+            <div class="feature-container">
+                <img src="../static/assests/breakout-rooms.png" alt="Collaboration Tools" class="feature-image">
+                <div class="feature-description">Collaborate effectively with integrated tools.</div>
+            </div>
+            <div class="feature-container">
+                <img src="../static/assests/chat-functionality.png" alt="Global Access" class="feature-image">
+                <div class="feature-description">Join from anywhere in the world on any device.</div>
+            </div>
+
+            <!-- Middle Row -->
+            <div class="feature-container middle">
+                <img src="../static/assests/meeting-recording.png" alt="Global Access" class="feature-image">
+                <div class="feature-description">Join from anywhere in the world on any device.</div>
+            </div>
+            <div class="feature-container middle">
+                <img src="../static/assests/screen-sharing.png" alt="Global Access" class="feature-image">
+                <div class="feature-description">Join from anywhere in the world on any device.</div>
+            </div>
+
+            <!-- Speech-Based Emotion Recognition -->
+            <div class="feature-container">
+                <img src="../static/assests/frontend.jpg" alt="Speech-Based Emotion Recognition" class="feature-image">
+                <div class="feature-description">Harness the power of speech for real-time emotion recognition in
+                    meetings.</div>
+            </div>
+
+            <!-- Image-Based Emotion Recognition -->
+            <div class="feature-container">
+                <img src="../static/assests/frontend.jpg" alt="Image-Based Emotion Recognition" class="feature-image">
+                <div class="feature-description">Utilize advanced image analysis for instant emotion detection during
+                    video calls.</div>
+            </div>
+        </div>
+    </section>
+    <section class="container my-5 fade-in-section">
+        <div class="text-center">
+            <h2>Ready to start?</h2>
+            <p>Join, create, or schedule your meeting today.</p>
+            <a href="{{url_for('join')}}" class="btn btn-primary">Join a Meeting</a>
+            <a href="{{url_for('create_meeting')}}" class="btn btn-secondary">Create/Schedule Meeting</a>
+        </div>
+    </section>
+
+    <footer class="bg-light text-center text-lg-start">
+        <div class="container p-4">
+            <p>&copy; 2024 MeetingPlatform. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

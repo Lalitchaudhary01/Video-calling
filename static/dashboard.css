@@ -1,0 +1,111 @@
+body,
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+.visible {
+    opacity: 1;
+    transform: none;
+}
+
+.dynamic-background {
+    background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.feature-image {
+    width: 100%;
+    max-width: 250px;
+    height: 75%;
+    display: block;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+}
+
+.feature-container:hover .feature-image {
+    transform: scale(1.05);
+}
+
+.feature-container {
+    text-align: center;
+    margin-bottom: 30px;
+    transition: ease-in;
+    transform: 0.3s ease;
+    box-shadow: 0.3s ease;
+}
+
+.feature-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.feature-description {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+    color: #565656;
+    padding: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.feature-container:hover .feature-description {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Adjusts spacing for the top row */
+}
+
+.feature-container {
+    width: calc(33.333% - 20px);
+    /* Adjusts width for 3 in a row, accounting for some margin */
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.feature-container.middle {
+    width: calc(50% - 20px);
+    /* Adjusts width for 2 in a row, accounting for some margin */
+    margin: 0 auto;
+    /* Centers the middle row containers */
+}
+
+@media (max-width: 768px) {
+
+    .feature-container,
+    .feature-container.middle {
+        width: 100%;
+        /* Stacks the containers on smaller screens */
+        margin-bottom: 20px;
+    }
+}

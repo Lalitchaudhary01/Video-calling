@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Meeting</title>
+</head>
+<body>
+    <h1>Schedule Meeting</h1>
+    <form id="scheduleMeetingForm">
+        <label for="name">Meeting Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+        <button type="submit">Schedule Meeting</button>
+    </form>
+
+    <h1>Scheduled Meetings</h1>
+    <ul>{% for meeting in meetings %}
+        <li>{{ meeting.room_name }} - Scheduled at {{ meeting.scheduled_time }}</li>
+    {% endfor %}</ul>
+
+    <script>
+        const form = document.getElementById('scheduleMeetingForm');
+        form.onsubmit = async (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            // Handle scheduling logic here
+            alert('Meeting scheduled: ' + name + ' on ' + date + ' at ' + time);
+        };
+    </script>
+</body>
+</html>

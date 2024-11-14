@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Index Page</title>
+      <style> 
+        table, th, td { 
+          border:1px solid black; 
+        } 
+        </style>
+   </head>
+   <body>
+      <h3>Profiles</h3>
+      <a href="/add_data">ADD</a>
+      <br>
+      <table>
+         <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>password</th>
+            <th>Date</th>
+            <th>#</th>
+         </thead>
+         {% for data in profiles %}
+         <tbody>
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.password}}</td>
+            <td>{{data.date}}</td>
+            <td><a href="/delete/{{data.id}}" type="button">Delete</a></td>
+         </tbody>
+         {% endfor%}
+      </table>
+   </body>
+</html>

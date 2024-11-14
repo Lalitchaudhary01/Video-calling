@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Meeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Join Meeting</h1>
+        <!-- <form action="{{ url_for('join') }}" class="mt-4" method="post"> -->
+        <form id="joinMeetingForm" class="mt-4" method="post">
+            <div class="form-group">
+                <input type="text" placeholder="Room ID" class="form-control" id="meetingId" name="meetingId" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Join</button>
+        </form>
+        
+    </div>
+</body>
+<script>
+    const form = document.getElementById('joinMeetingForm');
+    form.onsubmit = (event) => {
+        event.preventDefault();
+        const meetingId = document.getElementById('meetingId').value;
+        window.location.href = '/room/' + meetingId;
+    };
+</script>
+
+</html>

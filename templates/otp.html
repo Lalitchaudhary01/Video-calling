@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter OTP</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="../static/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cover">
+            <div class="front">
+                <img src="../static/assests/frontend.jpg" alt="">
+                <div class="text">
+                    <span class="text-1">Enhance workplace <br> communication <br> with AI Companion</span>
+                    <span class="text-2">Let's get connected</span>
+                </div>
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">Enter OTP</div>
+                    <form action="{{ url_for('verify') }}" method="post">
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-key"></i>
+                                <input type="text" placeholder="Enter OTP" name="otp" required>
+                            </div>
+                            <div class="button input-box">
+                                <input type="submit" value="Verify">
+                            </div>
+                            <div class="text sign-up-text"><a href="{{url_for('login')}}">Back to Login</a></div>
+                        </div>
+                    </form>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

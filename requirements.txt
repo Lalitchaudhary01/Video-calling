@@ -1,0 +1,13 @@
+Flask
+Flask-Mail
+Flask-SQLAlchemy
+Flask-Migrate
+email-validator
+Flask_socketio
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
+SQLAlchemy
+gunicorn
+Flask_socketio

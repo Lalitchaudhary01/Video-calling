@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="../static/script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script> -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="cover">
+            <div class="front">
+                <img src="../static/assests/frontend.jpg" alt="">
+                <div class="text">
+                    <span class="text-1">Enhance workplace <br> communication <br> with AI Companion</span>
+                    <span class="text-2">Let's get connected</span>
+                </div>
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">Login</div>
+                    <form action="{{ url_for('submit') }}" id="loginForm" onsubmit="validateForm(event)" method="post">
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-user"></i>
+                                <input type="text" placeholder="Enter your name" name="name" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input type="text" placeholder="Enter your email" name="email" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" placeholder="Enter your password" name="password" required>
+                            </div>
+                            <div class="text"><a href="#">Forgot password?</a></div>
+                            <!-- <div class="g-recaptcha" data-sitekey="6LcrrwkqAAAAACLgp3vY5oeUiiuPv4wSRiEXSXxG"
+                                id="recaptcha"></div> -->
+                            <div id="recaptcha-error" style="color: red; display: none;">Please complete the reCAPTCHA.
+                            </div>
+                            <div class="button input-box">
+                                <input type="submit" value="Submit">
+                            </div>
+                            <div class="text sign-up-text">Don't have an account? <a
+                                    href="{{ url_for('signup') }}">Signup now</a>
+                            </div>
+                        </div>
+                    </form>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

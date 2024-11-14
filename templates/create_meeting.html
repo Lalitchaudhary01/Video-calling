@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Meeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .meeting-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .meeting-form h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .meeting-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .meeting-form input[type="text"],
+        .meeting-form input[type="password"],
+        .meeting-form select,
+        .meeting-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        .meeting-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .meeting-form button:hover {
+            background-color: #218838;
+        }
+
+        .alert {
+            display: none;
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+
+        .alert.success {
+            background-color: #28a745;
+        }
+
+        .alert.error {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="meeting-form">
+        <h2>Create a New Meeting</h2>
+        <div id="alert" class="alert"></div>
+        <form id="createMeetingForm">
+            <label for="meetingName">Meeting Name</label>
+            <input type="text" id="meetingName" name="meetingName" placeholder="Enter meeting name" required>
+
+            <label for="meetingPassword">Meeting Password (Optional)</label>
+            <input type="password" id="meetingPassword" name="meetingPassword" placeholder="Enter meeting password">
+
+            <button type="submit">Create Meeting</button>
+        </form>
+    </div>
+
+    <script>
+        const createMeetingForm = document.getElementById('createMeetingForm');
+        const alertDiv = document.getElementById('alert');
+    
+        createMeetingForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const meetingName = document.getElementById('meetingName').value;
+    const meetingPassword = document.getElementById('meetingPassword').value;
+
+    try {
+        const response = await fetch('/create_meeting', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: meetingName,
+                password: meetingPassword
+            })
+        });
+
+        const contentType = response.headers.get("content-type");
+
+        if (contentType && contentType.includes("application/json")) {
+            const result = await response.json();
+
+            if (response.ok) {
+                alertDiv.className = 'alert success';
+                alertDiv.innerText = `Meeting created successfully! Redirecting to Meeting ID: ${result.meeting_id}`;
+                alertDiv.style.display = 'block';
+
+                // Redirect to the meeting room after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '/room/' + result.meeting_id;
+                }, 2000);
+            } else {
+                throw new Error(result.message || 'Error creating meeting');
+            }
+        } else {
+            throw new Error('Unexpected response from the server.');
+        }
+    } catch (error) {
+        alertDiv.className = 'alert error';
+        alertDiv.innerText = error.message;
+        alertDiv.style.display = 'block';
+        console.error(error);
+    }
+});
+
+    </script>
+    
+</body>
+</html>
