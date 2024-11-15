@@ -324,5 +324,5 @@ def handle_leave(data):
         print(f"Error in handle_leave: {str(e)}")
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True,port=8000)
+    socketio.run(app, debug=True,port=8000,allow_unsafe_werkzeug=True)
     
