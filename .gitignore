@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Flask environment
+instance/
+*.log
+*.pot
+
+# Local configuration
+config.py
+*.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Python IDEs
+.vscode/
+.idea/
+*.swp
+
+# Dependencies
+*.egg-info/
+pip-log.txt
+
+# PyInstaller
+*.spec
+
+# Database files
+*.sqlite3
+db.sqlite3
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Pytest cache
+.pytest_cache/
+
+# Static file caches
+staticfiles/
+
+# Deployment
+*.pyc
+*.pyo
+*.pyd
+*.egg
+
+# Other ignored files
+node_modules/
