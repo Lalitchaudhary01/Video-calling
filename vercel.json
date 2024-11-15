@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
+  ],
+  "env": {
+    "PYTHONUNBUFFERED": "1"
+  },
+  "buildCommand": "apt-get update && apt-get install -y python3-pip && pip3 install -r requirements.txt",
+  "startCommand": "gunicorn -w 4 -b 0.0.0.0:8000 app:app"
+}
